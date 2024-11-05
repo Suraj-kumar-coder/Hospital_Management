@@ -45,7 +45,7 @@
        <div class ="card-body text-center text-success">
        <i class="fas fa-user-md fa-3x"></i>
         </br>
-         <p class="fs-4 text-center"> Doctor 6 %>
+         <p class="fs-4 text-center"> Doctor </br> 10 
        </p>
       </div>
      </div>
@@ -84,7 +84,7 @@
        <div class="card point-card">
        <div class ="card-body text-center text-success">
         <i class="fas fa-calendar-check fa-3x"></i></br>
-         <p class="fs-4 text-center"> Total Appointment<br>
+         <p class="fs-4 text-center"> Total Appointment <br> 50
        </p> 
       </div>
      </div>
@@ -97,7 +97,7 @@
        <div class="card point-card" data-bs-toggle="modal" data-bs-target="#exampleModal">
        <div class ="card-body text-center text-success">
         <i class="fas fa-calendar-check fa-3x"></i></br>   
-         <p class="fs-4 text-center">  Specialist<br>
+         <p class="fs-4 text-center">  Specialist <br> 10
        </p>
       </div>
      </div>
