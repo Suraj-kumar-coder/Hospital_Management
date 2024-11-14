@@ -212,6 +212,9 @@ public class DoctorDao {
 	
 	
 	
+	
+	
+	
 	public int countDoctor()
 	{
 		int i=0;
