@@ -45,35 +45,79 @@ private  Connection conn;
 		}
 		return f;
 	}
-
-
-
-
-public User Userlogin(String em, String psw)
-{
-	User u = null;
-	try {
-		String sql = "select * from user_dts where email=? and password=?";
-		PreparedStatement ps = conn.prepareStatement(sql);
-		ps.setString(1,em);
-		ps.setString(2, psw);
-		
-		ResultSet rs = ps.executeQuery();
-		
-		while(rs.next())
+    
+	
+	public User Userlogin(String em, String psw)
+	{
+		User u = null;
+		try {
+			String sql = "select * from user_dts where email=? and password=?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1,em);
+			ps.setString(2, psw);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next())
+			{
+				u = new User();
+				u.setId(rs.getInt(1));
+				u.setFullName(rs.getString(2));
+				u.setEmail(rs.getString(3));
+				u.setPassword(rs.getString(4));
+			}
+			
+		}catch(Exception e)
 		{
-			u = new User();
-			u.setId(rs.getInt(1));
-			u.setFullName(rs.getString(2));
-			u.setEmail(rs.getString(3));
-			u.setPassword(rs.getString(4));
+			e.printStackTrace();
 		}
 		
-	}catch(Exception e)
-	{
-		e.printStackTrace();
+		return u;
 	}
 	
-		return u;
+	public boolean checkOldPassword(int userid,String oldpassword)
+	{
+		boolean f = false;
+		try {
+			String sql ="select * from user_dts where id=? and password =?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, userid);
+			ps.setString(2, oldpassword);
+			
+			ResultSet rs = ps.executeQuery();
+			while(rs.next())
+			{
+				f=true;
+			}
+			
+			
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return f;
+	}
+	
+	public boolean changePassword(int userid,String newpassword)
+	{
+		boolean f = false;
+		try {
+			String sql ="update user_dts set password =? where id=?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			
+			ps.setString(1, newpassword);
+			ps.setInt(2, userid);
+			
+			int i = ps.executeUpdate();
+			if(i==1)
+			{
+				f=true;
+			}
+			
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return f;
 	}
 }
