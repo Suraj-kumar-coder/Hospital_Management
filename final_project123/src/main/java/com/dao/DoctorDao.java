@@ -51,6 +51,8 @@ public class DoctorDao {
 	
 	
 	
+	
+	
 	public List<Doctor> getAllDoctor()
 	{
 		List<Doctor>lists = new ArrayList<>();
@@ -84,6 +86,8 @@ public class DoctorDao {
 		return lists;
 		
 	}
+	
+	
 	
 	
 	
@@ -157,8 +161,6 @@ public class DoctorDao {
 	}
 	
 	
-	
-	
 	public boolean deleteDoctor(int id)
 	{
 		boolean f = false;
@@ -178,6 +180,8 @@ public class DoctorDao {
 		}
 		return f;
 	}
+	
+	
 	
 	public Doctor login(String email, String psw)
 	{
@@ -232,6 +236,28 @@ public class DoctorDao {
 		return i;
 	}
 	
+	public int countAppointment()
+	{
+		int i=0;
+		
+		try {
+			String sql ="select * from appointment";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next())
+			{
+				i++;
+			}
+			
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		return i;
+	}
+	
 	public int countAppointmentByDoctorId(int did)
 	{
 		int i=0;
@@ -255,6 +281,54 @@ public class DoctorDao {
 		
 		return i;
 	}
+	
+	public int countUser()
+	{
+		int i=0;
+		
+		try {
+			String sql ="select * from user_dts";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next())
+			{
+				i++;
+			}
+			
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		return i;
+	}
+	
+	public int countSpecalist()
+	{
+		int i=0;
+		
+		try {
+			String sql ="select * from specialist";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next())
+			{
+				i++;
+			}
+			
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		return i;
+	}
+	
+	
+	
+	
 	
 	
 	
