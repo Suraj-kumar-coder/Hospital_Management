@@ -28,8 +28,8 @@ public class Userlogin extends HttpServlet{
 				UserDao dao = new UserDao(DBConnect.getConn());
 				
 				User user = dao.Userlogin(email,password);
-//				DoctorDao dao2 = new DoctorDao(DBConnect.getConn());
-//				Doctor d = dao2.login(email, password);
+				DoctorDao dao2 = new DoctorDao(DBConnect.getConn());
+				Doctor d = dao2.login(email, password);
 				String msg= null;
 				
 				if(user != null)
@@ -44,11 +44,11 @@ public class Userlogin extends HttpServlet{
 					resp.sendRedirect("admin/index.jsp");
 				}
 				
-//				else if( d != null)
-//				{
-//					session.setAttribute("doctObj",d);
-//					resp.sendRedirect("doctor/index.jsp");
-//				}
+				else if( d != null)
+				{
+					session.setAttribute("doctObj",d);
+					resp.sendRedirect("doctor/index.jsp");
+				}
 				
 				else
 				{
