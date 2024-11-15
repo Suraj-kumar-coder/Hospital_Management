@@ -2,7 +2,7 @@ package com.entity;
 
 public class User {
   
-	 private int id;
+	  private int id;
 	  private String fullName;
 	  private String email;
 	  private String password;

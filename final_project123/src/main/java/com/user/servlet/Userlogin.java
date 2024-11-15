@@ -25,13 +25,14 @@ public class Userlogin extends HttpServlet{
 				String password = req.getParameter("password");
 				
 				HttpSession session= req.getSession();
-				UserDao dao = new UserDao(DBConnect.getConn());
 				
-				User user = dao.Userlogin(email,password);
 				DoctorDao dao2 = new DoctorDao(DBConnect.getConn());
 				Doctor d = dao2.login(email, password);
 				String msg= null;
 				
+                UserDao dao = new UserDao(DBConnect.getConn());
+				
+				User user = dao.Userlogin(email,password);
 				if(user != null)
 				{
 					session.setAttribute("userObj", user);
